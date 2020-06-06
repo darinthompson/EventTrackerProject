@@ -66,6 +66,12 @@ public class BookServiceImpl implements BookService {
 			return false;
 		}
 	}
+	
+	@Override
+	public List<Book> findBooksByTitle(String title) {
+		title = "%" + title + "%";
+		return bookRepo.findBookByTitleLike(title);
+	}
 
 
 }

@@ -69,4 +69,9 @@ public class BookController {
 			return false;
 		}
 	}
+	
+	@GetMapping("books/search/{title}")
+	public List<Book> findBooksByTitle(@PathVariable String title) {
+		return bookService.findBooksByTitle(title);
+	}
 }
