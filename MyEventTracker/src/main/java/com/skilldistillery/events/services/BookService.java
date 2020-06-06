@@ -8,4 +8,5 @@ import com.skilldistillery.events.entities.Book;
 public interface BookService {
 	List<Book> getAllBooks();
 	Book getBookById(int id);
+	Book create(Book book);
 }
