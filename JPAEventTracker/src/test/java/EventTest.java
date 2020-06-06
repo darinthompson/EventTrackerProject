@@ -20,7 +20,7 @@ class EventTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("EventPU");
+		emf = Persistence.createEntityManagerFactory("LibraryPU");
 	}
 
 	@AfterAll
@@ -41,7 +41,7 @@ class EventTest {
 	@Test
 	void test() {
 		assertNotNull(book);
-		assertEquals("Test", book.getName());
+		assertEquals("Forges of Mars", book.getTitle());
 	}
 
 }

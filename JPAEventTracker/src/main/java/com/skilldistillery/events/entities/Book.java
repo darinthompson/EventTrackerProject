@@ -1,5 +1,6 @@
 package com.skilldistillery.events.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,14 +13,62 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String title;
+	private String author;
+	private String genre;
+	private int year;
+	private String isbn;
+	
+	@Column(name="img_url")
+	private String url;
 	
 	
-	
+
 	public Book() {}
-	public Book(int id, String name) {
+	public Book(int id, String title, String author, String genre, int year, String isbn, String url) {
 		super();
 		this.id = id;
-		this.title = name;
+		this.title = title;
+		this.author = author;
+		this.genre = genre;
+		this.year = year;
+		this.isbn = isbn;
+		this.url = url;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	public int getId() {
 		return id;
@@ -27,28 +76,17 @@ public class Book {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return title;
-	}
-	public void setName(String name) {
-		this.title = name;
-	}
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Book [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(title);
-		builder.append("]");
-		return builder.toString();
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		result = prime * result + year;
 		return result;
 	}
 	@Override
@@ -60,14 +98,57 @@ public class Book {
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
+		if (genre == null) {
+			if (other.genre != null)
+				return false;
+		} else if (!genre.equals(other.genre))
+			return false;
 		if (id != other.id)
+			return false;
+		if (isbn == null) {
+			if (other.isbn != null)
+				return false;
+		} else if (!isbn.equals(other.isbn))
 			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		if (year != other.year)
+			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Book [id=");
+		builder.append(id);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", author=");
+		builder.append(author);
+		builder.append(", genre=");
+		builder.append(genre);
+		builder.append(", year=");
+		builder.append(year);
+		builder.append(", isbn=");
+		builder.append(isbn);
+		builder.append(", url=");
+		builder.append(url);
+		builder.append("]");
+		return builder.toString();
+	}
+
 	
 }

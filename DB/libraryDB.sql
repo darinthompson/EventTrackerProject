@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `author` VARCHAR(100) NOT NULL,
   `genre` VARCHAR(100) NOT NULL,
   `year` INT NOT NULL,
-  `checked_out` TINYINT NOT NULL,
+  `checked_out` TINYINT NULL,
   `isbn` VARCHAR(100) NOT NULL,
   `img_url` VARCHAR(250) NULL,
   PRIMARY KEY (`id`))
