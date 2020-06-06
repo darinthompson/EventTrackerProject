@@ -6,20 +6,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Event {
+public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
+	private String title;
 	
 	
 	
-	public Event() {}
-	public Event(int id, String name) {
+	public Book() {}
+	public Book(int id, String name) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.title = name;
 	}
 	public int getId() {
 		return id;
@@ -28,18 +28,18 @@ public class Event {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return title;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.title = name;
 	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Event [id=");
+		builder.append("Book [id=");
 		builder.append(id);
 		builder.append(", name=");
-		builder.append(name);
+		builder.append(title);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -48,7 +48,7 @@ public class Event {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 	@Override
@@ -59,13 +59,13 @@ public class Event {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Event other = (Event) obj;
+		Book other = (Book) obj;
 		if (id != other.id)
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (title == null) {
+			if (other.title != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!title.equals(other.title))
 			return false;
 		return true;
 	}

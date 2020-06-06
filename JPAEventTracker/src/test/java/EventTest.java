@@ -11,12 +11,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.skilldistillery.events.entities.Event;
+import com.skilldistillery.events.entities.Book;
 
 class EventTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Event event;
+	private Book book;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,7 +31,7 @@ class EventTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		event = em.find(Event.class, 1);
+		book = em.find(Book.class, 1);
 	}
 
 	@AfterEach
@@ -40,8 +40,8 @@ class EventTest {
 
 	@Test
 	void test() {
-		assertNotNull(event);
-		assertEquals("Test", event.getName());
+		assertNotNull(book);
+		assertEquals("Test", book.getName());
 	}
 
 }
