@@ -9,4 +9,6 @@ import com.skilldistillery.events.entities.Book;
 
 public interface BookRepository extends JpaRepositoryImplementation<Book, Integer> {
 	List<Book> findBookByTitleLike(String title);
+	List<Book> findBookByGenre(String genre);
+	List<Book> findBookByAuthorLike(String author);
 }

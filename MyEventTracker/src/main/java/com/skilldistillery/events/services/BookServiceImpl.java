@@ -73,5 +73,16 @@ public class BookServiceImpl implements BookService {
 		return bookRepo.findBookByTitleLike(title);
 	}
 
+	@Override
+	public List<Book> findBooksByGenre(String genre) {
+		return bookRepo.findBookByGenre(genre);
+	}
+
+	@Override
+	public List<Book> findBooksByAuthor(String author) {
+		author = "%" + author + "%";
+		return bookRepo.findBookByAuthorLike(author);	
+	}
+
 
 }

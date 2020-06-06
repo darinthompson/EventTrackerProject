@@ -74,4 +74,35 @@ public class BookController {
 	public List<Book> findBooksByTitle(@PathVariable String title) {
 		return bookService.findBooksByTitle(title);
 	}
+	
+	@GetMapping("books/search/genre/{genre}")
+	public List<Book> findBooksByGenre(@PathVariable String genre) {
+		return bookService.findBooksByGenre(genre);
+	}
+
+	@GetMapping("books/search/author/{author}")
+	public List<Book> findBooksByAuthor(@PathVariable String author) {
+		return bookService.findBooksByAuthor(author);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
