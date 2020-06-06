@@ -17,9 +17,24 @@ public class Book {
 	private String genre;
 	private int year;
 	private String isbn;
+	private String publisher;
 	
 	@Column(name="img_url")
 	private String url;
+	
+	public Book(int id, String title, String author, String genre, int year, String isbn, String publisher,
+			String url) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.genre = genre;
+		this.year = year;
+		this.isbn = isbn;
+		this.publisher = publisher;
+		this.url = url;
+	}
+
 	
 	
 
@@ -84,6 +99,7 @@ public class Book {
 		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		result = prime * result + ((publisher == null) ? 0 : publisher.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		result = prime * result + year;
@@ -114,6 +130,11 @@ public class Book {
 			if (other.isbn != null)
 				return false;
 		} else if (!isbn.equals(other.isbn))
+			return false;
+		if (publisher == null) {
+			if (other.publisher != null)
+				return false;
+		} else if (!publisher.equals(other.publisher))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -148,6 +169,12 @@ public class Book {
 		builder.append(url);
 		builder.append("]");
 		return builder.toString();
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
 
 	

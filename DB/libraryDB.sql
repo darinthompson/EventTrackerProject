@@ -24,11 +24,12 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NOT NULL,
   `author` VARCHAR(100) NOT NULL,
-  `genre` VARCHAR(100) NOT NULL,
-  `year` INT NOT NULL,
+  `genre` VARCHAR(100) NULL,
+  `year` INT NULL,
   `checked_out` TINYINT NULL,
-  `isbn` VARCHAR(100) NOT NULL,
+  `isbn` VARCHAR(100) NULL,
   `img_url` VARCHAR(250) NULL,
+  `publisher` VARCHAR(250) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -48,10 +49,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `librarydb`;
-INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`) VALUES (1, 'Forges of Mars', 'Graham McNeill', 'Sci-Fi', 2018, 0, '9781784964979', NULL);
-INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`) VALUES (2, 'The Shadow Rising', 'Robert Jordan', 'Fantasy', 1992, 0, '9780812513738', NULL);
-INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`) VALUES (3, 'Let\'s Talk Spanish', 'Tracy Van Bischop', 'Language', 2006, 0, '9781435160590', NULL);
-INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`) VALUES (4, 'The Object-Oriented Thought Process', 'Matt Weisfeld', 'Technology/Programming', 2019, 0, '9780135181966', NULL);
+INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`, `publisher`) VALUES (1, 'Forges of Mars', 'Graham McNeill', 'Sci-Fi', 2018, 0, '978-1-78496-497-9', NULL, 'Black Library');
+INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`, `publisher`) VALUES (2, 'The Shadow Rising', 'Robert Jordan', 'Fantasy', 1992, 0, '978-0-8125-1373-8', NULL, 'Tor');
+INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`, `publisher`) VALUES (3, 'Let\'s Talk Spanish', 'Tracy Van Bischop', 'Language', 2006, 0, '978-1-4351-6059-0', NULL, 'Fall River Press');
+INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`, `publisher`) VALUES (4, 'The Object-Oriented Thought Process', 'Matt Weisfeld', 'Technology/Programming', 2019, 0, '978-0-13-518196-6', NULL, 'Addison-Wesley');
+INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`, `publisher`) VALUES (5, 'The Message: The Bible in Contemporary Language (duoton leatherlike)', 'Eugene H. Peterson', 'Religion', 2016, 0, '978-1-63146-578-9', NULL, 'NavPress');
+INSERT INTO `Book` (`id`, `title`, `author`, `genre`, `year`, `checked_out`, `isbn`, `img_url`, `publisher`) VALUES (6, 'The Holy Bible ESV (navy trutone)', 'Various', 'Religion', 2016, 0, '978-1-4335-6683-7', NULL, 'Crossway');
 
 COMMIT;
 

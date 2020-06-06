@@ -37,6 +37,35 @@ public class BookServiceImpl implements BookService {
 		Book newBook = bookRepo.save(book);
 		return newBook;
 	}
+	
+	@Override
+	public Book update(int id, Book book) {
+		Optional<Book> bookOpt = bookRepo.findById(id);
+		Book updatedBook = null;
+		if(bookOpt.isPresent()) {
+			updatedBook = bookOpt.get();
+			updatedBook.setTitle(book.getTitle());
+			updatedBook.setAuthor(book.getAuthor());
+			updatedBook.setGenre(book.getGenre());
+			updatedBook.setYear(book.getYear());
+			updatedBook.setIsbn(book.getIsbn());
+			updatedBook.setUrl(book.getUrl());
+			updatedBook.setPublisher(book.getPublisher());
+			bookRepo.saveAndFlush(updatedBook);			
+		}
+		return updatedBook;
+	}
+	
+	@Override
+	public boolean delete(int id) {
+		Optional<Book> bookOpt = bookRepo.findById(id);
+		if(bookOpt.isPresent()) {
+			bookRepo.delete(bookOpt.get());
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 
 }

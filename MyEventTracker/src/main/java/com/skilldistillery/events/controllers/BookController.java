@@ -6,10 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.aspectj.lang.annotation.DeclareMixin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,17 +28,17 @@ public class BookController {
 	private BookService bookService;
 	
 	@GetMapping("books")
-	private List<Book> getBooks() {
+	public List<Book> getBooks() {
 		return bookService.getAllBooks();
 	}
 	
 	@GetMapping("books/{id}")
-	private Book getBookById(@PathVariable int id) {
+	public Book getBookById(@PathVariable int id) {
 		return bookService.getBookById(id);
 	}
 	
 	@PostMapping("books")
-	private Book create(@RequestBody Book book, HttpServletRequest request, HttpServletResponse response) {
+	public Book create(@RequestBody Book book, HttpServletRequest request, HttpServletResponse response) {
 		Book newBook = null;
 		try {
 			newBook = bookService.create(book);
@@ -49,5 +52,21 @@ public class BookController {
 			book = null;
 		}
 		return newBook;
+	}
+	
+	@PutMapping("books/{id}")
+	public Book update(@PathVariable int id, @RequestBody Book book) {
+		return bookService.update(id, book);
+	}
+	
+	@DeleteMapping("books/{id}")
+	public boolean delete(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		if(bookService.delete(id)) {
+			response.setStatus(204);
+			return true;
+		} else {
+			response.setStatus(400);
+			return false;
+		}
 	}
 }
