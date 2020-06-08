@@ -28,7 +28,8 @@ of who I might have loaned a book out.
 * Git/Github
 * VIM
 * La Croix - Razz-Cranberry
-* Nu-Funk playlist - Spotify
+* The True Loves - Full Performance (Live on KEXP) https://www.youtube.com/watch?v=TD2hNsY6G7E 
+
 
 ## Lessons Learned
 - This project was pretty straight forward. It was more of a simple exercise helping to cement concepts built upon from ealier projects. Learning more
