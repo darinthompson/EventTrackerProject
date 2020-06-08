@@ -70,7 +70,7 @@ public class BookController {
 		}
 	}
 	
-	@GetMapping("books/search/{title}")
+	@GetMapping("books/search/title/{title}")
 	public List<Book> findBooksByTitle(@PathVariable String title) {
 		return bookService.findBooksByTitle(title);
 	}
