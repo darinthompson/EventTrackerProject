@@ -20,7 +20,7 @@ of who I might have loaned a book out.
 |Book | PUT | api/books/{id} | Updates book |
 |Boolean | DELETE | api/books/{id} | Deletes a book |
 
-##Technologies Used
+## Technologies Used
 * MySQL, MySQL Workbench
 * JPA/Hibernate
 * Spring Boot
@@ -30,6 +30,6 @@ of who I might have loaned a book out.
 * La Croix - Razz-Cranberry
 * Nu-Funk playlist - Spotify
 
-##Lessons Learned
+## Lessons Learned
 - This project was pretty straight forward. It was more of a simple exercise helping to cement concepts built upon from ealier projects. Learning more
 of Spring and capabilities of boot makes things a little easier. Can't complain.
