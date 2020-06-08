@@ -1,0 +1,10 @@
+id,title,author,genre,year,checked_out,isbn,img_url,publisher
+2,"The Shadow Rising","Robert Jordan",Fantasy,1992,0,978-0-8125-1373-8,NULL,Tor
+3,"Let's Talk Spanish","Tracy Van Bischop",Language,2006,0,978-1-4351-6059-0,NULL,"Fall River Press"
+4,"The Object-Oriented Thought Process","Matt Weisfeld",Technology/Programming,2019,0,978-0-13-518196-6,NULL,Addison-Wesley
+5,"The Message: The Bible in Contemporary Language (duoton leatherlike)","Eugene H. Peterson",Religion,2016,0,978-1-63146-578-9,NULL,NavPress
+6,"The Holy Bible ESV (navy trutone)",Various,Religion,2016,0,978-1-4335-6683-7,NULL,Crossway
+7,"Forges Of Mars","Graham McNeill",Sci-Fi,2018,NULL,978-1-78496-497-9,NULL,"Black Library"
+8,"Dungeons And Dragons: Player's Handbook (5e)",Various,RPG/Gaming,2014,NULL,978-0-7869-6560-1,NULL,"Wizards Of The Coast"
+9,"Dungeons And Dragons: Monster Manual (5e)",Various,RPG/Gaming,2014,NULL,978-0-7869-6561-8,NULL,"Wizards Of The Coast"
+10,"Dungeons And Dragons: Dungeon Master's Guide (5e)",Various,RPG/Gaming,2014,NULL,978-0-7869-6562-5,NULL,"Wizards Of The Coast"
