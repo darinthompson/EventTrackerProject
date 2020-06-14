@@ -34,17 +34,28 @@ function showErrors(message) {
 
 function displayBook(book) {
 	console.log("*******" + book);
+	console.log(book.id);
+	let deleteButton = document.createElement('button');
+	deleteButton.type = 'submit';
+	deleteButton.id = 'deletebtn';
+	deleteButton.textContent = 'Delete Book';
+	deleteButton.addEventListener('click', function() {
+		deleteBook(book.id);
+	});
+
 	let div = document.getElementById('bookList');
 	div.textContent = '';
 	let h1 = document.createElement('h1');
 	h1.textContent = book.title;
 	div.appendChild(h1);
+	div.appendChild(deleteButton);
 }
 
 function getBookById(id) {
 	console.log(id);
 	let xhr = new XMLHttpRequest();
 	let uri = `api/books/${id}`;
+
 	xhr.open('GET', uri);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
@@ -203,4 +214,21 @@ function postBook(book) {
 
 	xhr.send(bookJSON);
 	form.reset();
+}
+
+function deleteBook(id) {
+	let uri = `api/books/${id}`;
+	let xhr = new XMLHttpRequest();
+	xhr.open('DELETE', uri);
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4) {
+			if(xhr.status === 200 || xhr.status === 204) {
+				clearDiv();
+				alert('Book Successfully deleted');
+			} else {
+				showErrors('ERROR deleting film');
+			}
+		}
+	}
+	xhr.send(null);
 }
