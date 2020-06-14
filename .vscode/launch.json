@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MyEventTrackerApplication<MyEventTracker>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.skilldistillery.events.MyEventTrackerApplication",
+            "projectName": "MyEventTracker",
+            "args": ""
+        }
+    ]
+}

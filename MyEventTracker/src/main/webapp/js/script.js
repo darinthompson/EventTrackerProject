@@ -14,8 +14,16 @@ function init() {
 		}
 	});	
 }
-
+function clearDiv() {
+	console.log("I AM HERE");
+	let div = document.getElementById('bookList');
+	console.log(div);
+	while(div.firstElementChild) {
+		div.removeChild(div.firstElementChild);
+	} 
+}
 function showErrors(message) {
+	clearDiv();
 	let div = document.getElementById('bookList');
 	let h3 = document.createElement('h3');
 	h3.textContent = message;
@@ -56,7 +64,7 @@ function getAllThebooks() {
 	xhr.open('GET', uri);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
-			if (xhr.status == 200) {
+			if (xhr.status === 200) {
 				var books = JSON.parse(xhr.responseText);
 				console.log(books);
 				displayBooks(books);

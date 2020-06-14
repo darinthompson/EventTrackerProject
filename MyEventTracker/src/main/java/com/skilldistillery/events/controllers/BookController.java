@@ -33,8 +33,14 @@ public class BookController {
 	}
 	
 	@GetMapping("books/{id}")
-	public Book getBookById(@PathVariable int id) {
-		return bookService.getBookById(id);
+	public Book getBookById(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		Book book = bookService.getBookById(id);
+		if(book == null) {
+			response.setStatus(404);
+		} else {
+			response.setStatus(200);
+		}
+		return book;
 	}
 	
 	@PostMapping("books")
