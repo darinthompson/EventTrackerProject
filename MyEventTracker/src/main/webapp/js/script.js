@@ -1,11 +1,13 @@
 //var submitbtn = document.getElementById('submit');
 window.addEventListener('load', function() {
 	init();
-	getAllThebooks();
+	//getAllThebooks();
 });
 
 function init() {
 	console.log("script.js loaded");
+	let addButton = document.getElementById('addBook');
+	addButton.addEventListener('click', createBookForm);
 	document.bookSearchForm.book.addEventListener('click', function(e) {
 		e.preventDefault();
 		var bookId = document.bookSearchForm.bookId.value;
@@ -92,4 +94,111 @@ function displayBooks(books) {
 		ul.appendChild(li);
 	}
 	div.appendChild(ul);
+}
+
+function createBookForm() {
+	let addButton = document.getElementById('addBook');
+	let div = document.getElementById('createBook');
+	let form = document.createElement('form');
+	form.name = 'createBookForm';
+
+	let title = document.createElement('input');
+	title.type = 'text';
+	title.name = 'title';
+	title.placeholder = 'Title';
+	form.appendChild(title);
+	form.appendChild(document.createElement('br'));
+
+	let author = document.createElement('input');
+	author.type = 'text';
+	author.name = 'author';
+	author.placeholder = 'Author';
+	form.appendChild(author);
+	form.appendChild(document.createElement('br'));
+
+	var genres = ['Sci-fi', 'Fantasy', 'Thriller', 'Biography', 'Religious', 'Language', 'Technology/Programming', 'RPG/Gaming', ];
+	let genre = document.createElement('select');
+	genre.name = 'genre';
+	for(let i = 0; i < genres.length; i++) {
+		var option = document.createElement('option');
+		option.value = genres[i];
+		option.text = genres[i];
+		genre.appendChild(option);
+	}
+
+	var year = document.createElement('input');
+	year.type = 'number';
+	year.name = 'year';
+	year.placeholder = 'publish year';
+
+
+	var isbn = document.createElement('input');
+	isbn.type='text';
+	isbn.name = 'isbn';
+	isbn.placeholder = 'isbn';
+
+	var publisher = document.createElement('input');
+	publisher.type = 'text';
+	publisher.name = 'publisher';
+	publisher.placeholder = 'publisher';
+
+	var submitButton = document.createElement('input');
+	submitButton.type = 'submit';
+	submitButton.name = 'submit';
+	submitButton.value = 'Submit';
+
+	
+	form.appendChild(document.createElement('br'));
+	form.appendChild(title);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(author);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(genre);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(year);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(isbn);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(publisher);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(submitButton);
+	div.appendChild(form);
+	submitButton.addEventListener('click', addBook);
+	addButton.removeEventListener('click', createBookForm);
+}
+
+function addBook(e) {
+	e.preventDefault();
+	let form = document.createBookForm;
+	console.log(form);
+	let book = {};
+	book.title = form.title.value;
+	console.log(book.title);
+	book.author = form.author.value;
+	book.genre = form.genre.value;
+	book.year = form.year.value;
+	book.isbn = form.isbn.value;
+	book.publisher = form.publisher.value;
+	//console.log(book);
+	postBook(book);
+}
+
+function postBook(book) {
+	let bookJSON = JSON.stringify(book);
+	let uri = `api/books`;
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', uri);
+	xhr.setRequestHeader('Content-type', 'application/json');
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4) {
+			if(xhr.status === 200 || xhr.status === 201) {
+				let createdBook = JSON.parse(xhr.responseText);
+				displayBook(createdBook);
+			} else {
+				showErrors('Unknown issue creating book');
+			}
+		}
+	}
+
+	xhr.send(bookJSON);
 }
