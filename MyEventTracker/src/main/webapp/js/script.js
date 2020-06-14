@@ -184,6 +184,7 @@ function addBook(e) {
 }
 
 function postBook(book) {
+	let form = document.createBookForm;
 	let bookJSON = JSON.stringify(book);
 	let uri = `api/books`;
 	let xhr = new XMLHttpRequest();
@@ -201,4 +202,5 @@ function postBook(book) {
 	}
 
 	xhr.send(bookJSON);
+	form.reset();
 }
