@@ -6,6 +6,8 @@ window.addEventListener("load", function () {
 function init() {
   console.log("script.js loaded");
   let addButton = document.getElementById("addBook");
+  let bookListButton = document.getElementById('getAllBooks');
+  bookListButton.addEventListener('click', getAllThebooks);
   addButton.addEventListener("click", createBookForm);
   document.bookSearchForm.book.addEventListener("click", function (e) {
     e.preventDefault();
@@ -15,8 +17,8 @@ function init() {
     }
   });
 }
-function clearDiv(d) {
-  let div = document.getElementById(d);
+function clearDiv() {
+  let div = document.getElementById('bookList');
   console.log(div);
   while (div.firstElementChild) {
     div.removeChild(div.firstElementChild);
@@ -54,9 +56,27 @@ function displayBook(book) {
 
   let div = document.getElementById("bookList");
   div.textContent = "";
-  let h1 = document.createElement("h1");
-  h1.textContent = book.title;
-  div.appendChild(h1);
+
+  let author = document.createElement("h5");
+  let title = document.createElement("h2");
+  let genre = document.createElement('h5');
+  let year = document.createElement('h5');
+  let publisher = document.createElement('h5');
+  let isbn = document.createElement('h5');
+  
+  title.textContent = book.title;
+  year.textContent = 'Year: ' + book.year;
+  genre.textContent = 'Genre: ' + book.genre;
+  author.textContent = 'Author: ' + book.author;
+  title.textContent = 'Title: ' + book.title;
+  isbn.textContent = 'ISBN: ' + book.isbn;
+  publisher.textContent = "Publisher: " + book.publisher;
+  div.appendChild(title);
+  div.appendChild(author);
+  div.appendChild(genre);
+  div.appendChild(year);
+  div.appendChild(isbn);
+  div.appendChild(publisher);
   div.appendChild(deleteButton);
   div.appendChild(updateButton);
 }
@@ -100,20 +120,40 @@ function getAllThebooks() {
 }
 
 function displayBooks(books) {
-  console.log("I RAN LIKE I WAS SUPPOSED TO");
+  let counter = 0;
+  let bookCount = document.createElement('blockquote');
   console.log(books);
   let div = document.getElementById("bookList");
+  div.textContent = '';
   let ul = document.createElement("ul");
   for (var i = 0; i < books.length; i++) {
+	counter++;
     let li = document.createElement("li");
-    let author = document.createElement("blockquote");
-    let title = document.createElement("h3");
-    author.textContent = books[i].author;
-    title.textContent = books[i].title;
-    li.appendChild(title);
-    li.appendChild(author);
-    ul.appendChild(li);
+    let author = document.createElement("h5");
+    let title = document.createElement("h2");
+	let genre = document.createElement('h5');
+	let year = document.createElement('h5');
+	let publisher = document.createElement('h5');
+	let isbn = document.createElement('h5');
+
+	year.textContent = 'Year: ' + books[i].year;
+	genre.textContent = 'Genre: ' + books[i].genre;
+	author.textContent = 'Author: ' + books[i].author;
+	title.textContent = 'Title: ' + books[i].title;
+	isbn.textContent = 'ISBN: ' + books[i].isbn;
+	publisher.textContent = "Publisher: " + books[i].publisher;
+
+	li.appendChild(title);
+	li.appendChild(document.createElement('hr'));
+	li.appendChild(author);
+	li.appendChild(genre);
+	li.appendChild(year);
+	li.appendChild(isbn);
+	li.appendChild(publisher);
+	ul.appendChild(li);
   }
+  bookCount.textContent = counter + " books found";
+  div.appendChild(bookCount);
   div.appendChild(ul);
 }
 
@@ -327,9 +367,12 @@ function createEditForm(book) {
 
 	div.appendChild(form);
 	submit.addEventListener('click', updateBook);
+
 }
 
 function updateBook(e) {
+	let div = document.getElementById('updateBook');
+	let bookDiv = document.getElementById('bookList');
 	e.preventDefault();
 	let form = document.update;
 	let uBook = {};
@@ -342,7 +385,10 @@ function updateBook(e) {
 	uBook.isbn = form.isbn.value;
 	uBook.publisher = form.publisher.value;
 	postUpdatedBook(uBook);
-	clearDiv(updateBook)
+	while(div.firstElementChild) {
+		div.removeChild(div.firstElementChild);
+	}
+	bookDiv.textContent = '';
 }
 
 function postUpdatedBook(book) {
@@ -350,13 +396,14 @@ function postUpdatedBook(book) {
   let uri = `api/books/${book.id}`;
   let xhr = new XMLHttpRequest();
   xhr.open('PUT', uri);
-
+  
   xhr.setRequestHeader("Content-Type", "Application/json");
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200 || xhr.status === 201) {
-		alert('Book Successfully Updated!')
-        var newBook = JSON.parse(xhr.responseText);
+	  if (xhr.readyState === 4) {
+		  if (xhr.status === 200 || xhr.status === 201) {
+			  alert('Book Successfully Updated!')
+			  var newBook = JSON.parse(xhr.responseText);
+			  getBookById(newBook.id);
       } else {
 		showErrors('Error updated book');
       }
