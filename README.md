@@ -34,3 +34,10 @@ of who I might have loaned a book out.
 ## Lessons Learned
 - This project was pretty straight forward. It was more of a simple exercise helping to cement concepts built upon from ealier projects. Learning more
 of Spring and capabilities of boot makes things a little easier. Can't complain.
+
+- This weekend was quite rough. For some reason I had issues with updating my book and it took me 4 hours to figure it out, and to be honest, I am not exactly sure what
+it was that solved the problem. So, for this weeks Lesson learned I would have to say that it was a deep dive into eating an elephant one bite at a time. You just have to be ok solving one bug
+after another after another until your code compiles and you get the desired outcome. It's also good to take a breath of fresh air and scream into the sky.
+
+## AWS ACCESS
+Link to live site: http://3.22.232.98:8080/MyEventTracker/
