@@ -39,5 +39,6 @@ of Spring and capabilities of boot makes things a little easier. Can't complain.
 it was that solved the problem. So, for this weeks Lesson learned I would have to say that it was a deep dive into eating an elephant one bite at a time. You just have to be ok solving one bug
 after another after another until your code compiles and you get the desired outcome. It's also good to take a breath of fresh air and scream into the sky.
 
+- This weekend was kind of fun. My biggest lesson learned was that it's ok to not understand something in it's entirety to complete a task. Having a tough week of school, I didn't get to learn as much as I wanted to in terms of Angular but because of what I had learned in school prior to this weekend allowed me the ability to pick up bits and pieces and wwork through material to piece together a minimally functional app.
 ## AWS ACCESS
 Link to live site: http://3.22.232.98:8080/MyEventTracker/
