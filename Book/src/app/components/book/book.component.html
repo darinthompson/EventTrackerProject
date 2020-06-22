@@ -1,0 +1,63 @@
+<header>
+  <h1 class="mx-auto">My Library</h1>
+  <blockquote>contains: {{getBookCount()}} titles</blockquote>
+  <button class='btn btn-success' (click)='showBookForm()'>Add a book</button>
+  <hr>
+  <div id="AddFilm">
+    <form *ngIf='createBook'>
+      <input type="text" name="title" [(ngModel)]="newBook.title" placeholder="Title"><br>
+      <input type="text" name="author" [(ngModel)]="newBook.author" placeholder="Author"><br>
+      <!-- <select ng-model="newBook.genre">
+        <option value="Sci-fi">Sci-fi</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Biography">Biography</option>
+        <option value="Religious">Religious</option>
+        <option value="Language">Language</option>
+        <option value="Technology/Programming">Technology/Programming</option>
+        <option value="RPG/Gaming">RPG/Gaming</option>
+      </select><br> -->
+      <input type="text" name="genre" [(ngModel)]="newBook.genre" placeholder="Genre"><br>
+      <input type="text" name="publisher" [(ngModel)]="newBook.publisher" placeholder="Publisher"><br>
+      <input type="text" name="year" [(ngModel)]="newBook.year" placeholder="Year"><br>
+      <input type="text" name="isbn" [(ngModel)]="newBook.isbn" placeholder="ISBN"><br>
+      <input class='btn btn-success' type='submit' (click)='addBook()' />
+      <input class='btn btn-danger' type='submit' value="cancel" (click)='reload()' />
+    </form>
+  </div>
+</header>
+
+<table class="table table-striped" *ngIf='!selected'>
+  <thead class='thead-dark'>
+    <tr>
+      <th scope='col'>Title</th>
+      <th scope='col'>Author</th>
+      <th scope='col'>Genre</th>
+      <th scope='col'>Year</th>
+      <th scope='col'>Publisher</th>
+      <th scope='col'>ISBN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of library">
+      <td (click)='displayBook(book)'>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.genre}}</td>
+      <td>{{book.year}}</td>
+      <td>{{book.publisher}}</td>
+      <td>{{book.isbn}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf='selected'>
+  <h2>Title: {{selected.title}}</h2>
+  <h5>Author: {{selected.author}}</h5>
+  <h5>Genre: {{selected.genre}}</h5>
+  <h5>Year: {{selected.year}}</h5>
+  <h5>Publisher: {{selected.publisher}}</h5>
+  <h5>ISBN: {{selected.isbn}}</h5>
+  <hr>
+  <button (click)='displayLibrary()'>Go Back</button>
+  <button (click)='deleteBook(selected.id)'>DELETE</button>
+</div>
