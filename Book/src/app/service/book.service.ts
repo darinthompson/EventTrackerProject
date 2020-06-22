@@ -39,4 +39,13 @@ export class BookService {
       })
     );
   }
+
+  update(book: Book) {
+    return this.http.put<Book>(this.url + "/"+ book.id, book).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError("error updating Book");
+      })
+    );
+  }
 }

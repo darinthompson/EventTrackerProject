@@ -55,6 +55,19 @@ export class BookComponent implements OnInit {
       }
     )
   }
+
+  updateBook(book: Book) {
+    this.bookService.update(book).subscribe(
+      success => {
+        alert('Update Successful!');
+        this.reload();
+      },
+      fail => {
+        alert('Error updating Book!');
+      }
+    )
+  }
+
   ngOnInit(): void {
     this.reload();
   }
@@ -69,6 +82,10 @@ export class BookComponent implements OnInit {
 
   displayLibrary() {
     this.selected = null;
+  }
+
+  setEditBook() {
+    this.editBook = Object.assign({}, this.selected);
   }
 
   showBookForm() {

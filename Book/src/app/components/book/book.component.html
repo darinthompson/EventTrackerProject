@@ -59,5 +59,19 @@
   <h5>ISBN: {{selected.isbn}}</h5>
   <hr>
   <button (click)='displayLibrary()'>Go Back</button>
+  <button (click)='setEditBook()'>Edit</button>
   <button (click)='deleteBook(selected.id)'>DELETE</button>
+
+  <form *ngIf='editBook'>
+    <input type="text" value = {{selected.title}} name="title" [(ngModel)]="editBook.title"><br>
+    <input type="text" value = {{selected.author}} name="author" [(ngModel)]="editBook.author"><br>
+    <input type="text" value = {{selected.genre}} name="genre"  [(ngModel)]="editBook.genre"><br>
+    <input type="number" value = {{selected.year}} name="year"  [(ngModel)]="editBook.year"><br>
+    <input type="text" value = {{selected.publisher}} name="publisher"  [(ngModel)]="editBook.publisher"><br>
+    <input type="text" value = {{selected.isbn}} name="isbn"  [(ngModel)]="editBook.isbn"><br>
+    <button (click)="reload()">Cancel</button>
+    <button (click)="updateBook(editBook)">Save</button>
+  </form>
 </div>
+
+
