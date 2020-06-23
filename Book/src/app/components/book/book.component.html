@@ -7,7 +7,7 @@
     <form *ngIf='createBook'>
       <input type="text" name="title" [(ngModel)]="newBook.title" placeholder="Title"><br>
       <input type="text" name="author" [(ngModel)]="newBook.author" placeholder="Author"><br>
-      <!-- <select ng-model="newBook.genre">
+      <select name='genre' [(ngModel)]="newBook.genre">
         <option value="Sci-fi">Sci-fi</option>
         <option value="Fantasy">Fantasy</option>
         <option value="Thriller">Thriller</option>
@@ -16,8 +16,7 @@
         <option value="Language">Language</option>
         <option value="Technology/Programming">Technology/Programming</option>
         <option value="RPG/Gaming">RPG/Gaming</option>
-      </select><br> -->
-      <input type="text" name="genre" [(ngModel)]="newBook.genre" placeholder="Genre"><br>
+      </select><br>
       <input type="text" name="publisher" [(ngModel)]="newBook.publisher" placeholder="Publisher"><br>
       <input type="text" name="year" [(ngModel)]="newBook.year" placeholder="Year"><br>
       <input type="text" name="isbn" [(ngModel)]="newBook.isbn" placeholder="ISBN"><br>
